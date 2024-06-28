@@ -51,7 +51,7 @@ export default {
       </template>
         <template #content>
         <p>Card Number: {{ userCards.cardNumber }}</p>
-        <p>Expiry Date: {{ userCards.expiryDate }}</p>
+        <p>Expiry Date: {{ userCards.expirationDate }}</p>
         <p>Card Issuer: {{ userCards.cardIssuer }}</p>
         <p>CVV: {{ userCards.cvv }}</p>
         <p>Balance: {{ userCards.balance }}</p>

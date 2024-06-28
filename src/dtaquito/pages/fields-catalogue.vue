@@ -32,16 +32,18 @@ export default {
     }
   },
   async created() {
+    this.userID = Number(localStorage.getItem('userId'));
     this.userRole = localStorage.getItem('userRole');
-    this.userID = localStorage.getItem('userId');
+
     this.FieldsService = new FieldsApiService();
 
     this.FieldsService.getAll().then(response => {
       if (this.userRole === '2') {
-        this.fields = response.data.filter(field => field.userId === this.user);
+        this.fields = response.data.filter(fields=> fields.user.id === this.userID);
         console.log(this.fields);
+        console.log(this.userID);
       } else {
-        this.fields = response.data;
+        this.fi1elds = response.data;
         console.log(this.fields);
 
       }
@@ -49,8 +51,6 @@ export default {
         return Field.toDisplayableField(tutorial);
       });
     });
-
-
     //const subsResponse = await this.subsService.getAll();
     //this.userSubscription = subsResponse.data.find(subscription => subscription.userId === this.userID);
     this.userSubscription= await this.subsService.getById(this.userID);
